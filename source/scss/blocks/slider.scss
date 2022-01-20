@@ -39,9 +39,14 @@
   &:nth-child(even) {
     .slider__item-text {
       align-self: flex-end;
+      transition-delay: 1000ms;
 
       @media (max-width: $mobile) and (orientation: landscape) {
         align-self: flex-start;
+      }
+
+      @media (orientation: portrait), (max-width: $mobile) and (orientation: landscape) {
+        transition-delay: 500ms;
       }
     }
   }
@@ -96,6 +101,23 @@
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
+  opacity: 0;
+  transform: translateX(20px);
+  transition-duration: 0.5s;
+  transition-delay: 500ms;
+
+  .screen--story.active .swiper-slide-active &,
+  .screen--story.active .swiper-slide-active + .swiper-slide & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (orientation: portrait), (max-width: $mobile) and (orientation: landscape) {
+    .screen--story.active .swiper-slide-active + .swiper-slide & {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+  }
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
@@ -122,6 +144,10 @@
     min-height: 14rem;
     font-size: 1.4rem;
     line-height: 1.5rem;
+    .screen-story.active .swiper-slide-active + .swiper-slide & {
+      opacity: 0;
+      transform: translateX(20px);
+    }
   }
 }
 
