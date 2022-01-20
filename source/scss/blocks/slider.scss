@@ -103,8 +103,7 @@
   line-height: 2rem;
   opacity: 0;
   transform: translateX(20px);
-  transition-duration: 0.5s;
-  transition-delay: 500ms;
+  transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
 
   body.loaded .screen--story.active .swiper-slide-active &,
   body.loaded .screen--story.active .swiper-slide-active + .swiper-slide & {

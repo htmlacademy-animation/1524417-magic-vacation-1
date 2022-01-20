@@ -37,7 +37,7 @@
   color: $c-light;
   transform: translateX(-30px);
   opacity: 0;
-  transition: 0.3s cubic-bezier(.75,.98,.33,.87) 0.2s;
+  transition: opacity 0.3s cubic-bezier(.75,.98,.33,.87) 0.2s, transform 0.3s cubic-bezier(.75,.98,.33,.87) 0.2s;
 
   body.loaded & {
     opacity: 1;
@@ -91,7 +91,7 @@
   z-index: 1;
   transform: translateX(30px);
   opacity: 0;
-  transition: 0.3s cubic-bezier(.75,.98,.33,.87) 0.4s;
+  transition: opacity 0.3s cubic-bezier(.75,.98,.33,.87) 0.4s, transform 0.3s cubic-bezier(.75,.98,.33,.87) 0.4s;
 
   body.loaded & {
     opacity: 1;
@@ -193,7 +193,7 @@
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
-  transition: 0.3s cubic-bezier(.75,.98,.33,.87) 0.3s;
+  transition: opacity 0.3s cubic-bezier(.75,.98,.33,.87) 0.3s;
   opacity: 0;
 
   body.loaded & {
@@ -263,7 +263,7 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition-duration: 0.3s;
+    transition: color 0.3s ease;
 
     &::after {
       content: "";
@@ -274,7 +274,7 @@
       background-color: $c-light;
       right: 0;
       left: auto;
-      transition-duration: 0.3s;
+      transition: width 0.3s ease, background-color 0.3s ease;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         left: 0;

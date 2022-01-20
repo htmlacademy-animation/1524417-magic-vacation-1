@@ -47,7 +47,7 @@
   background-color: $c-light;
   z-index: 1;
   transform: translateY(50px);
-  transition: 0.5s cubic-bezier(.75,.98,.33,.87);
+  transition: transform 0.5s cubic-bezier(.75,.98,.33,.87);
 
   body.loaded & {
     transform: translateY(0);

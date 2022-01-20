@@ -93,10 +93,9 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
-  transition-duration: 0.5s;
   opacity: 0;
   transform: translateY(20px);
-  transition-delay: 700ms;
+  transition: opacity 0.5s ease 0.7s, transform 0.5s ease 0.7s;
 
   body.loaded .screen--intro.active & {
     opacity: 1;
