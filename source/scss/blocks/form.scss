@@ -44,12 +44,10 @@
   border: 0;
   border-radius: 3rem;
   outline: none;
-  transition-duration: 0.3s;
+  transition: flex-grow 0.3s ease 0.1s; 
 
-  .screen--game.active & {
+  body.loaded .screen--game.active & {
     flex-grow: 1;
-    height: 6rem;
-    padding: 0 5.6rem;
   }
 
   &:focus {

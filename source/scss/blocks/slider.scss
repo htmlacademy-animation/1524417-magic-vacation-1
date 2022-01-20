@@ -103,17 +103,16 @@
   line-height: 2rem;
   opacity: 0;
   transform: translateX(20px);
-  transition-duration: 0.5s;
-  transition-delay: 500ms;
+  transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
 
-  .screen--story.active .swiper-slide-active &,
-  .screen--story.active .swiper-slide-active + .swiper-slide & {
+  body.loaded .screen--story.active .swiper-slide-active &,
+  body.loaded .screen--story.active .swiper-slide-active + .swiper-slide & {
     opacity: 1;
     transform: translateX(0);
   }
 
   @media (orientation: portrait), (max-width: $mobile) and (orientation: landscape) {
-    .screen--story.active .swiper-slide-active + .swiper-slide & {
+    body.loaded .screen--story.active .swiper-slide-active + .swiper-slide & {
       opacity: 0;
       transform: translateX(20px);
     }
