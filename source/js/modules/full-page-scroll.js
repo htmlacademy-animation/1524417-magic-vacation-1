@@ -3,12 +3,16 @@ import throttle from 'lodash/throttle';
 export default class FullPageScroll {
   constructor() {
     this.THROTTLE_TIMEOUT = 1000;
+    this.SCREEN_STORY_INDEX = 1;
+    this.SCREEN_PRIZES_INDEX = 2;
     this.scrollFlag = true;
     this.timeout = null;
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.screenBackground = document.querySelector(`.screen--background`);
 
+    this.prevScreen = null;
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
@@ -40,13 +44,22 @@ export default class FullPageScroll {
   }
 
   onUrlHashChanged() {
+    this.prevScreen = this.activeScreen
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
     this.changePageDisplay();
   }
 
   changePageDisplay() {
-    this.changeVisibilityDisplay();
+    if (this.prevScreen === this.SCREEN_STORY_INDEX && this.activeScreen === this.SCREEN_PRIZES_INDEX) {
+      this.screenBackground.classList.add(`active`);
+      setTimeout(() => {
+        this.changeVisibilityDisplay();
+      }, 400);
+    } else {
+      this.screenBackground.classList.remove(`active`);
+      this.changeVisibilityDisplay();
+    }
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
   }
