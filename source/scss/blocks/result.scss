@@ -24,8 +24,8 @@
 
 .result__image {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 30%;
+  left: calc(50% - 350px);
   right: 0;
   bottom: 0;
   display: flex;
@@ -33,24 +33,84 @@
   justify-content: center;
   align-items: center;
   z-index: -1;
+  max-width: 700px;
+  max-height: 500px;
 
   @media (orientation: portrait) {
     left: -1rem;
     right: -1rem;
+    max-width: 600px;
+    max-height: 250px;
+    left: calc(50% - 300px);
+    top: 45%;
   }
 
-  picture {
-    display: block;
-    width: 100%;
-    height: 100%;
+  @media (max-width: $mobile) and (orientation: portrait) {
+    max-width: 320px;
+    left: calc(50% - 160px);
+    top: 35%;
   }
 
   img {
+    position: absolute;
     display: block;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
     object-position: center;
+    
+    &.leaf__image {
+      width: 50%;
+      right: -5%;
+      transform-origin: left;
+
+      body.loaded .screen--result.screen--show & {
+        animation: leaf 3s ease-in-out forwards;
+      }
+    }
+
+    &.leaf__image--secondary {
+      width: 50%;
+      left: -5%;
+      bottom: 0;
+      transform-origin: right;
+      
+      body.loaded .screen--result.screen--show & {
+        animation: leafSecondary 3s ease-in-out forwards;
+      }
+    }
+
+    &.leaf__image--green {
+      width: 60%;
+      right: -12%;
+      bottom: 10%;
+
+      transform-origin: left;
+
+      body.loaded .screen--result.screen--show & {
+        animation: greenLeaf 3s ease-in-out forwards;
+      }
+    }
+
+    &.suitcase__image {
+      width: 60%;
+      bottom: 0;
+
+      body.loaded .screen--result.screen--show & {
+        animation: suitcaseAnimation 500ms ease-in-out forwards;
+      }
+    }
+
+    &.flamingo__image {
+      z-index: 9;
+      width: 45%;
+      left: calc(50% - 35%);
+      bottom: 0;
+
+      body.loaded .screen--result.screen--show & {
+        animation: flamingoAnimation 500ms ease-in-out forwards, flamingoShaking 5s ease-in-out infinite 500ms;
+      }
+    }
   }
 }
 
@@ -266,5 +326,155 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       width: 45rem;
     }
+  }
+}
+
+
+@keyframes greenLeaf {
+  0% {
+    opacity: 0;
+  }
+
+  16% {
+    transform: rotate(-35deg);
+    opacity: 0;
+  }
+
+  35% {
+    transform: rotate(10deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotate(-6deg);
+    opacity: 1;
+  }
+
+  65% {
+    transform: rotate(3deg);
+  }
+  
+  80% {
+    transform: rotate(-1deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes leaf {
+  0% {
+    opacity: 0;
+  }
+
+  13% {
+    transform: rotate(-35deg);
+    opacity: 0;
+  }
+
+  25% {
+    transform: rotate(10deg);
+    opacity: 1;
+  }
+
+  40% {
+    transform: rotate(-7deg);
+    opacity: 1;
+  }
+
+  55% {
+    transform: rotate(5deg);
+  }
+  
+  70% {
+    transform: rotate(-3deg);
+  }
+
+  85% {
+    transform: rotate(1deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes leafSecondary {
+  0% {
+    opacity: 0;
+  }
+  13% {
+    transform: rotate(35deg);
+    opacity: 0;
+  }
+
+  25% {
+    transform: rotate(-10deg);
+    opacity: 1;
+  }
+
+  40% {
+    transform: rotate(7deg);
+  }
+
+  55% {
+    transform: rotate(-5deg);
+  }
+  
+  70% {
+    transform: rotate(3deg);
+  }
+
+  85% {
+    transform: rotate(-1deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes flamingoShaking {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes flamingoAnimation {
+  0% {
+    transform: translateY(200px) rotate(-25deg);
+    opacity: 0;
+  }
+
+  80% {
+    transform: translateY(-10px) rotate(5deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes suitcaseAnimation {
+  0% {
+    transform: translate3d(0, 200px, 0) scale(0);
+  }
+
+  80% {
+    transform: translate3d(10px, -40px, 0) scale(1);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
 }

@@ -50,6 +50,14 @@
   line-height: 0.906;
   letter-spacing: -0.04em;
 
+  body.loaded .screen--game.active & {
+    &.active {
+      .text__word span {
+        transform: translate3d(0, 0.15em, 0);
+      }
+    }
+  }
+
   @media (min-width: $stop-scaling) {
     font-size: 48px;
   }

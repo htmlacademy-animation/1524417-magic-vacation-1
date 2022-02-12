@@ -99,3 +99,14 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.text__word {
+  display: inline-block;
+  margin: 0 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  span {
+    display: inline-block;
+    transform: translate3d(0, 1.1em, 0);
+  }
+}

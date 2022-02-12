@@ -79,6 +79,14 @@
   line-height: 0.906;
   letter-spacing: -0.04em;
 
+  body.loaded .screen--story.active & {
+    &.active {
+      .text__word span {
+        transform: translate3d(0, 0.1em, 0);
+      }
+    }
+  }
+
   @media (min-width: $stop-scaling) {
     margin-left: -55px;
     font-size: 48px;
