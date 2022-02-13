@@ -31,6 +31,14 @@
   line-height: 0.906;
   letter-spacing: -0.04em;
 
+  body.loaded .screen--prizes.active & {
+    &.active {
+      .text__word span {
+        transform: translate3d(0, 0.1em, 0);
+      }
+    }
+  }
+
   @media (min-width: $stop-scaling) {
     font-size: 48px;
   }
@@ -58,6 +66,14 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.2;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 500ms ease 400ms, transform 300ms ease 400ms;
+
+  body.loaded .screen--prizes.active & {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   @media (min-width: $stop-scaling) {
     margin-left: 58px;
